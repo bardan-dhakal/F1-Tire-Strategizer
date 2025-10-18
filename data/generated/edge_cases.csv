@@ -1,0 +1,7 @@
+color,compound,lap_number,wear_pattern,sidewall_deformation,tyre_pressure,is_graining,tyre_temperature,track_temperature,strategy,scenario_name
+green,intermediate,3,even,False,19.5,False,88,18,MONITOR,Monaco_rain_start
+white,hard,42,outer,False,16.5,False,118,35,PIT_NOW,Silverstone_blowout_risk
+yellow,medium,28,center,False,22.5,False,125,45,PIT_SOON,Singapore_overheating
+red,soft,6,uneven,False,20.0,True,88,16,CONSERVE,Barcelona_cold_graining
+red,soft,8,even,False,20.5,False,102,28,PUSH,Perfect_push_conditions
+yellow,medium,25,even,True,20.0,False,105,30,PIT_NOW,Critical_sidewall_deformation
