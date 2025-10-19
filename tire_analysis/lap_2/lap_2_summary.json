@@ -1,0 +1,14 @@
+{
+  "lap_number": 2,
+  "timestamp": "2025-10-19T00:15:10.103724",
+  "total_tires": 1,
+  "tire_analysis": {
+    "tire_unknown": {
+      "color": "Glossy black",
+      "wear_pattern": "even",
+      "sidewall_deformation": false,
+      "is_graining": false,
+      "lap_number": 2
+    }
+  }
+}
