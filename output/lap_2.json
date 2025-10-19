@@ -1,0 +1,19 @@
+{
+  "color": "Grey-black",
+  "wear_pattern": "even",
+  "sidewall_deformation": false,
+  "is_graining": false,
+  "compound": "soft",
+  "track_strategy": "Extend braking zones to compensate for low surface adhesion and modulate throttle on exit to mitigate rear axle instability. The soft compound is outside its thermal window due to surface water; avoid apex kerbs and painted lines to search for grip. If precipitation intensifies or standing water increases, pit immediately for intermediate tires. A sudden drop in carcass temperature or any aquaplaning event is the signal for accelerated degradation and requires an immediate strategy change.",
+  "weather": [
+    "sunny",
+    "rainy",
+    "snowy"
+  ],
+  "track": "Abu Dhabi",
+  "lap_number": 2,
+  "tyre_pressure": 20.0,
+  "tyre_temperature": 103,
+  "track_temperature": 32,
+  "strategy": "MONITOR"
+}

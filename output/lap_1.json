@@ -1,0 +1,19 @@
+{
+  "color": "Grey-black",
+  "wear_pattern": "even",
+  "sidewall_deformation": false,
+  "is_graining": false,
+  "compound": "soft",
+  "track_strategy": "Box this lap for intermediate compound; current slick is incorrect for precipitation. Extend braking zones to manage low adhesion and apply smooth, progressive throttle to prevent rear axle instability. A 10\u00b0C track temperature decrease will lengthen the tire warm-up phase, while further weather deterioration will necessitate a transition to the full wet compound. Accelerated degradation on intermediates signals the crossover point for a return to a dry compound.",
+  "weather": [
+    "sunny",
+    "rainy",
+    "snowy"
+  ],
+  "track": "Marina Bay",
+  "lap_number": 1,
+  "tyre_pressure": 19.7,
+  "tyre_temperature": 103,
+  "track_temperature": 20,
+  "strategy": "MONITOR"
+}
