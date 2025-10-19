@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 genai.configure(api_key=os.getenv('GEMINI_API_KEY'))
-model = genai.GenerativeModel('gemini-2.5-flash')
+model = genai.GenerativeModel('gemini-2.5-pro')
 
 def encode_image_to_base64(image_path):
     with open(image_path, "rb") as image_file:
@@ -40,7 +40,7 @@ IMPORTANT RULES:
 
 Guidelines:
 - color: Look at the tire surface color (Matte black/Glossy black/purple tin/Grey-black/Pale grey)
-- compound: Only if you can see clear tire markings (red=soft, yellow=medium, white=hard, green=intermediate, blue=wet)
+- compound: Possible values are (red=soft, yellow=medium, white=hard, green=intermediate, blue=wet)
 - wear_pattern: 
   * "even" = uniform wear across tire
   * "inner" = more wear on inside edge
@@ -89,6 +89,7 @@ def process_tire_images():
                 with open(output_path, 'w') as f:
                     json.dump(analysis_result, f, indent=2)
                 print(f"Saved analysis to {output_path}")
+                print(analysis_result)
                 break
 
 if __name__ == "__main__":

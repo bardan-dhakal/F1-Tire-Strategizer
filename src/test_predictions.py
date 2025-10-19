@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 import numpy as np
+import random
 
 print("="*60)
 print("F1 TIRE STRATEGY - INTERACTIVE PREDICTION TESTER")
@@ -93,3 +94,170 @@ def predict_strategy(tire_data):
         'risk_score': risk_score,
         'lap_percentage': lap_percentage * 100
     }
+
+def reverse_engineer_meta_data(data, lap_number):
+    """
+    Reverse engineer realistic sensor data from visual observations
+    
+    Args:
+        data: Dict from Gemini with:
+            - color
+            - compound  
+            - wear_pattern
+            - sidewall_deformation
+            - is_graining
+        lap_number: Current lap number
+    
+    Returns:
+        Dict with:
+            - tyre_pressure
+            - tyre_temperature
+            - track_temperature
+    """
+    
+    compound = data['compound']
+    wear_pattern = data['wear_pattern']
+    is_graining = data['is_graining']
+    sidewall_deformation = data['sidewall_deformation']
+
+    
+    # Compound choice gives clues about track conditions
+    if compound == 'soft':
+        # Teams choose soft on cooler days or for short stints
+        track_temp_base = random.uniform(20, 32)
+    elif compound == 'medium':
+        # Medium works in most conditions
+        track_temp_base = random.uniform(25, 38)
+    elif compound == 'hard':
+        # Hard chosen for hot conditions
+        track_temp_base = random.uniform(32, 45)
+    elif compound == 'intermediate':
+        # Damp/wet conditions
+        track_temp_base = random.uniform(12, 25)
+    elif compound == 'wet':
+        # Heavy rain
+        track_temp_base = random.uniform(10, 20)
+    else:
+        track_temp_base = 28  # Default
+    
+    # Add some natural variation
+    track_temperature = int(track_temp_base + random.uniform(-2, 2))
+
+    # Base tire temp on compound optimal range
+    compound_optimal_temps = {
+        'soft': (95, 105),
+        'medium': (100, 110),
+        'hard': (105, 115),
+        'intermediate': (85, 95),
+        'wet': (75, 85)
+    }
+    
+    optimal_min, optimal_max = compound_optimal_temps.get(
+        compound, (100, 110)
+    )
+    
+    # Adjust based on graining
+    if is_graining:
+        # Graining = tire too cold
+        # Temperature below optimal range
+        tyre_temp = optimal_min - random.uniform(5, 15)
+    else:
+        # No graining = tire at or above optimal temp
+        # Check wear pattern for more clues
+        
+        if wear_pattern == 'even':
+            # Perfect conditions - in optimal range
+            tyre_temp = random.uniform(optimal_min, optimal_max)
+        
+        elif wear_pattern == 'center':
+            # Center wear = overheating
+            tyre_temp = optimal_max + random.uniform(5, 15)
+        
+        elif wear_pattern in ['inner', 'outer']:
+            # Edge wear = some overheating + setup issues
+            tyre_temp = random.uniform(optimal_min + 5, optimal_max + 10)
+        
+        elif wear_pattern == 'uneven':
+            # Uneven = inconsistent temps
+            tyre_temp = random.uniform(optimal_min - 5, optimal_max + 15)
+        
+        else:
+            # Default to optimal range
+            tyre_temp = random.uniform(optimal_min, optimal_max)
+    
+    # Lap wear effect: tires get hotter as they wear
+    # Estimate wear percentage based on compound life
+    compound_life = {'soft': 22, 'medium': 32, 'hard': 45, 
+                     'intermediate': 15, 'wet': 10}
+    expected_life = compound_life.get(compound, 30)
+    wear_percentage = lap_number / expected_life
+    
+    # Add heat from wear (up to +10°C for worn tires)
+    wear_heat_increase = min(wear_percentage * 10, 10)
+    tyre_temp += wear_heat_increase
+    
+    # Sidewall deformation indicates extreme conditions
+    if sidewall_deformation:
+        # Either very hot or pressure issue
+        tyre_temp = max(tyre_temp, optimal_max + 15)
+    
+    tyre_temperature = int(tyre_temp)
+    
+
+    
+    # Base pressure range (normal operating)
+    base_pressure_range = (19.0, 21.5)
+    
+    # Adjust based on wear pattern
+    if wear_pattern == 'even':
+        # Even wear = optimal pressure
+        tyre_pressure = random.uniform(19.5, 21.0)
+    
+    elif wear_pattern == 'center':
+        # Center wear = over-inflated
+        tyre_pressure = random.uniform(21.5, 23.5)
+    
+    elif wear_pattern == 'inner':
+        # Inner wear = could be setup or pressure
+        tyre_pressure = random.uniform(18.5, 21.5)
+    
+    elif wear_pattern == 'outer':
+        # Outer wear = could be setup or pressure
+        tyre_pressure = random.uniform(18.5, 21.5)
+    
+    elif wear_pattern == 'uneven':
+        # Uneven = inconsistent pressure
+        tyre_pressure = random.uniform(18.0, 22.5)
+    
+    else:
+        tyre_pressure = random.uniform(19.0, 21.5)
+    
+    # Sidewall deformation = pressure problem
+    if sidewall_deformation:
+        # Either very low or very high
+        if random.random() < 0.7:  # Usually low pressure
+            tyre_pressure = random.uniform(15.0, 17.5)
+        else:  # Sometimes over-pressure + heat
+            tyre_pressure = random.uniform(23.0, 25.0)
+    
+    # Temperature affects pressure (physics)
+    # Hot tires have higher pressure
+    temp_pressure_effect = (tyre_temperature - 100) * 0.05
+    tyre_pressure += temp_pressure_effect
+    
+    # Round to 1 decimal
+    tyre_pressure = round(tyre_pressure, 1)
+    
+    # Clamp to reasonable bounds
+    tyre_pressure = max(15.0, min(tyre_pressure, 25.0))
+
+    data.update({
+            
+        "lap_number": lap_number,
+        "tyre_pressure": tyre_pressure,
+        "tyre_temperature": tyre_temperature,
+        "track_temperature": track_temperature
+        })
+    
+    return data
+    

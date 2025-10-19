@@ -1,5 +1,6 @@
 {
-  "color": "Matte black",
+  "color": "Glossy black",
+  "compound": "wet",
   "wear_pattern": "even",
   "sidewall_deformation": false,
   "is_graining": false
