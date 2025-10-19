@@ -3,5 +3,11 @@
   "compound": "hard",
   "wear_pattern": "uneven",
   "sidewall_deformation": false,
-  "is_graining": true
+  "is_graining": true,
+  "track_strategy": "Graining is evident; minimize lateral slip angle on entry and mid-corner. Delay throttle application on exit to protect the rear axle and bring surface temperatures into the working window. Should track temperature increase, manage core temperatures with increased lift-and-coast. If temperature drops or degradation accelerates, prepare for an imminent pit stop to avoid the cliff. In case of precipitation, box immediately for the intermediate compound.",
+  "lap_number": 3,
+  "tyre_pressure": 20.1,
+  "tyre_temperature": 94,
+  "track_temperature": 31,
+  "strategy": "CONSERVE"
 }

@@ -3,5 +3,11 @@
   "compound": "intermediate",
   "wear_pattern": "even",
   "sidewall_deformation": false,
-  "is_graining": false
+  "is_graining": false,
+  "track_strategy": "Extend braking zones to compensate for low-mu surface conditions and modulate throttle application to mitigate wheelspin on corner exit. Utilize wider entry lines and minimal steering angle to maintain platform stability and manage front axle saturation. A 10\u00b0C temperature drop indicates icing risk, requiring pace reduction; further precipitation or accelerated degradation signals the compound is outside its thermal window, triggering a mandatory pit for the full wet tire.",
+  "lap_number": 2,
+  "tyre_pressure": 19.1,
+  "tyre_temperature": 88,
+  "track_temperature": 17,
+  "strategy": "MONITOR"
 }

@@ -3,5 +3,11 @@
   "compound": "wet",
   "wear_pattern": "even",
   "sidewall_deformation": false,
-  "is_graining": false
+  "is_graining": false,
+  "track_strategy": "Pre-empt braking markers substantially and modulate all pedal inputs to manage the minimal coefficient of friction. Adopt wide geometric lines and utilize higher gears on corner exit to control torque delivery and mitigate wheelspin. A negative temperature delta will vitrify the compound, whereas a positive delta risks rapid thermal degradation on any drying surface. Further precipitation or accelerated wear mandates an immediate pit stop to fit a new wet set.",
+  "lap_number": 5,
+  "tyre_pressure": 19.4,
+  "tyre_temperature": 80,
+  "track_temperature": 17,
+  "strategy": "MONITOR"
 }

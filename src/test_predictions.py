@@ -251,13 +251,10 @@ def reverse_engineer_meta_data(data, lap_number):
     # Clamp to reasonable bounds
     tyre_pressure = max(15.0, min(tyre_pressure, 25.0))
 
-    data.update({
-            
+    return {   
         "lap_number": lap_number,
         "tyre_pressure": tyre_pressure,
         "tyre_temperature": tyre_temperature,
         "track_temperature": track_temperature
-        })
-    
-    return data
+        }
     

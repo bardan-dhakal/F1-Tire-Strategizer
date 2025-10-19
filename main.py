@@ -2,22 +2,39 @@ from src.gemini_vision import process_tire_images
 from src.test_predictions import predict_strategy, reverse_engineer_meta_data
 from pathlib import Path
 import json
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
 
+cred = credentials.Certificate('service.json')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
 
 
 if __name__ == "__main__":
     process_tire_images()
     print("Tire images processed successfully")
 
-    tyre_data_list = []
     for lap_file in Path("output").glob("*.json"):
         with open(lap_file, 'r') as f:
             data = json.load(f)
         lap_number = int(lap_file.stem.split("_")[1])
-        data = reverse_engineer_meta_data(data, lap_number)
-
-        tyre_data_list.append(data)
-    
-    for tyre_data in tyre_data_list:
-        result = predict_strategy(tyre_data)
-        print(result)
+        print("Data: ", data)
+        print("Tyre pressure: ", data.get("tyre_pressure"))
+        if "tyre_pressure" not in data:
+            result = reverse_engineer_meta_data(data, lap_number)
+            data.update(result)
+            print("Reversed engineereed data: ", data)
+        else:
+            print("Reversed engineereed data already exists: ", data)
+        
+        if "strategy" not in data:
+            result = predict_strategy(data)
+            print(result)
+            data.update({"strategy": result["strategy"]})
+            with open(lap_file, 'w') as f:
+                json.dump(data, f, indent=2)
+        else:
+            print("Strategy already exists: ", data)
+        
+        db.collection('laps').document(f"lap_{data['lap_number']}").set(data)

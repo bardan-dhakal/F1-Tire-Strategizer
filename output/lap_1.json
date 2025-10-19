@@ -3,5 +3,11 @@
   "compound": "hard",
   "wear_pattern": "even",
   "sidewall_deformation": false,
-  "is_graining": false
+  "is_graining": false,
+  "track_strategy": "Extend braking zones substantially, modulating pressure to prevent lock-ups and aquaplaning. Utilize higher gears on corner exit for progressive throttle application to mitigate wheelspin. A wider line is required to search for mechanical grip; avoid all painted surfaces and standing water.\n\nShould precipitation increase, box immediately for the full wet compound. A 10\u00b0C drop in track temperature will make the hard compound unworkable, mandating a change to intermediate or wet tires. Accelerated degradation is a secondary factor to the critical lack of grip; the immediate response to any further negative condition is a pit stop for a treaded tire.",
+  "lap_number": 1,
+  "tyre_pressure": 21.5,
+  "tyre_temperature": 112,
+  "track_temperature": 43,
+  "strategy": "CONSERVE"
 }
