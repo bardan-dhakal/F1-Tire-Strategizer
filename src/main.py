@@ -1,5 +1,5 @@
-from src.gemini_vision import process_tire_images
-from src.test_predictions import predict_strategy, reverse_engineer_meta_data
+from gemini_vision import process_tire_images
+from test_predictions import predict_strategy, reverse_engineer_meta_data
 from pathlib import Path
 import json
 import firebase_admin
@@ -11,7 +11,13 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 
-if __name__ == "__main__":
+fetch_lock = False
+
+def cron_job():
+    global fetch_lock
+    if fetch_lock:
+        return
+    fetch_lock = True
     process_tire_images()
     print("Tire images processed successfully")
 
@@ -38,3 +44,4 @@ if __name__ == "__main__":
             print("Strategy already exists: ", data)
         
         db.collection('laps').document(f"lap_{data['lap_number']}").set(data)
+    fetch_lock = False

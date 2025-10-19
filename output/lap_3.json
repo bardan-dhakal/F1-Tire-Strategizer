@@ -1,13 +1,13 @@
 {
-  "color": "Grey-black",
-  "compound": "hard",
-  "wear_pattern": "uneven",
+  "color": "Matte black",
+  "wear_pattern": "even",
   "sidewall_deformation": false,
-  "is_graining": true,
-  "track_strategy": "Graining is evident; minimize lateral slip angle on entry and mid-corner. Delay throttle application on exit to protect the rear axle and bring surface temperatures into the working window. Should track temperature increase, manage core temperatures with increased lift-and-coast. If temperature drops or degradation accelerates, prepare for an imminent pit stop to avoid the cliff. In case of precipitation, box immediately for the intermediate compound.",
+  "is_graining": false,
+  "compound": "soft",
+  "track_strategy": "Box this lap for intermediate compound tires; the current slick specification is incorrect for precipitation. On the in-lap, braking points must be advanced significantly to account for reduced surface adhesion and throttle application must be progressive to mitigate rear axle breakaway. A transition to the full wet compound is required if precipitation intensifies, and a track temperature drop will necessitate more aggressive inputs to maintain tire operating window. Accelerated degradation on the intermediate compound will advance the planned pit stop window.",
   "lap_number": 3,
   "tyre_pressure": 20.1,
-  "tyre_temperature": 94,
-  "track_temperature": 31,
-  "strategy": "CONSERVE"
+  "tyre_temperature": 96,
+  "track_temperature": 25,
+  "strategy": "MONITOR"
 }

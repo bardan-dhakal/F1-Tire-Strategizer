@@ -9,6 +9,7 @@ import json
 from datetime import datetime
 from typing import Set, Dict, List
 from pi_api_client import PiTireAPIClient
+from main import cron_job
 
 class TireImageMonitor:
     def __init__(self, poll_interval: int = 15, base_dir: str = "tire_images"):
@@ -163,6 +164,7 @@ class TireImageMonitor:
             
             # Save updated history
             self.save_download_history()
+            cron_job()
         else:
             print("✓ No new images found")
         

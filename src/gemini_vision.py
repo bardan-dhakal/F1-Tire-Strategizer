@@ -139,6 +139,16 @@ def process_tire_images():
             
             for image_file in lap_dir.iterdir():
                 analysis_result = analyze_tire_with_gemini(image_file)
+
+                # Fallback values for missing data
+                if "compound" not in analysis_result:
+                    analysis_result.update({"compound": "soft"})
+                if "wear_pattern" not in analysis_result:
+                    analysis_result.update({"wear_pattern": "even"})
+                if "is_graining" not in analysis_result:
+                    analysis_result.update({"is_graining": False})
+                if "sidewall_deformation" not in analysis_result:
+                    analysis_result.update({"sidewall_deformation": False})
                 
                 with open(output_path, 'w') as f:
                     json.dump(analysis_result, f, indent=2)

@@ -4,10 +4,10 @@
   "wear_pattern": "even",
   "sidewall_deformation": false,
   "is_graining": false,
-  "track_strategy": "Pre-empt braking markers substantially and modulate all pedal inputs to manage the minimal coefficient of friction. Adopt wide geometric lines and utilize higher gears on corner exit to control torque delivery and mitigate wheelspin. A negative temperature delta will vitrify the compound, whereas a positive delta risks rapid thermal degradation on any drying surface. Further precipitation or accelerated wear mandates an immediate pit stop to fit a new wet set.",
+  "track_strategy": "**Driving Adjustments**\nThe installed wet compound is operating critically outside its thermal window. Extend braking zones by 50-70 meters to mitigate thermal saturation and prevent front-axle lock-ups. Employ progressive throttle application and minimize slip angles to reduce surface friction, preserving the tire carcass for an immediate pit stop. The primary objective is to box for a slick compound this lap.\n\n**Contingency Actions**\nA positive 10\u00b0C track temperature deviation will cause catastrophic blistering; abort the lap and box. Should precipitation commence, increase aggression to build core temperature into the operational range. Accelerated degradation is the expected baseline; manage thermal spikes with short-shifting and confirm pit lane entry for the appropriate dry compound.",
   "lap_number": 5,
-  "tyre_pressure": 19.4,
-  "tyre_temperature": 80,
-  "track_temperature": 17,
+  "tyre_pressure": 19.2,
+  "tyre_temperature": 84,
+  "track_temperature": 12,
   "strategy": "MONITOR"
 }

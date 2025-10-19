@@ -1,13 +1,13 @@
 {
   "color": "Matte black",
-  "compound": "soft",
   "wear_pattern": "even",
   "sidewall_deformation": false,
   "is_graining": false,
-  "track_strategy": "Box, box, confirm box for Intermediate compound; the soft slick is non-operational for current precipitation. Post-pit, braking points must be brought forward and throttle application modulated to manage rear traction. Should track temperature fall, increase aggression on inputs to maintain core tire temperature; if rain intensifies, monitor aquaplaning risk as the crossover threshold for the Full Wet tire will be approached. Accelerated degradation of the Intermediate will force a review of stint length and potential for an additional stop.",
+  "compound": "soft",
+  "track_strategy": "Revise braking points to be significantly earlier, limiting input to the longitudinal phase to prevent instability. Throttle application must be extremely progressive, utilizing short-shifting to manage torque delivery and mitigate rear slip on corner exit. For a 10\u00b0C track temperature drop, increase energy input on straights; for weather deterioration, anticipate an imminent pit call for wet compounds and likely race control intervention. Accelerated degradation under these conditions is anomalous, indicating a potential setup or mechanical fault requiring an immediate box for inspection.",
   "lap_number": 4,
   "tyre_pressure": 19.9,
-  "tyre_temperature": 99,
-  "track_temperature": 21,
+  "tyre_temperature": 102,
+  "track_temperature": 24,
   "strategy": "MONITOR"
 }

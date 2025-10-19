@@ -4,10 +4,10 @@
   "wear_pattern": "even",
   "sidewall_deformation": false,
   "is_graining": false,
-  "track_strategy": "Extend braking zones substantially, modulating pressure to prevent lock-ups and aquaplaning. Utilize higher gears on corner exit for progressive throttle application to mitigate wheelspin. A wider line is required to search for mechanical grip; avoid all painted surfaces and standing water.\n\nShould precipitation increase, box immediately for the full wet compound. A 10\u00b0C drop in track temperature will make the hard compound unworkable, mandating a change to intermediate or wet tires. Accelerated degradation is a secondary factor to the critical lack of grip; the immediate response to any further negative condition is a pit stop for a treaded tire.",
+  "track_strategy": "Adjust braking points to account for lower peak grip; maximize minimum apex speed through high-load corners by reducing lateral scrub. A +10\u00b0C track temperature delta requires managing surface temperatures via reduced slip angles, while a -10\u00b0C delta necessitates aggressive inputs to maintain core temperature. In the event of accelerated degradation, initiate tire-saving protocols including short-shifting and prepare for a revised pit window. Any precipitation requires an immediate pit stop for the appropriate wet compound and a rearward brake balance migration.",
   "lap_number": 1,
-  "tyre_pressure": 21.5,
-  "tyre_temperature": 112,
-  "track_temperature": 43,
-  "strategy": "CONSERVE"
+  "tyre_pressure": 20.3,
+  "tyre_temperature": 106,
+  "track_temperature": 36,
+  "strategy": "MONITOR"
 }
