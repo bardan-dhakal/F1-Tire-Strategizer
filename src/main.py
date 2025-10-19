@@ -42,6 +42,13 @@ def cron_job():
                 json.dump(data, f, indent=2)
         else:
             print("Strategy already exists: ", data)
-        
-        db.collection('laps').document(f"lap_{data['lap_number']}").set(data)
+    collection_ref = db.collection('laps')
+    docs = collection_ref.stream()
+    for doc in docs:
+        doc.reference.delete()
+    for lap_file in Path("output").glob("*.json"):
+        with open(lap_file, 'r') as f:
+            data = json.load(f)
+        lap_number = int(lap_file.stem.split("_")[1])
+        collection_ref.document(f"lap_{lap_number}").set(data)
     fetch_lock = False

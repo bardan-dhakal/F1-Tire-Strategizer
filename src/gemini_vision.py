@@ -107,7 +107,7 @@ Constraints:
     response_text = response.text.strip()
     print(response_text)
 
-    return response_text
+    return response_text, weather, random_track
 
     
 
@@ -130,8 +130,8 @@ def process_tire_images():
                 with open(output_path, 'r') as f:
                     json_data_variable = json.load(f)
                 if "track_strategy" not in json_data_variable:
-                    json_strategy = track_specific_strategy(json_data_variable)
-                    json_data_variable.update({"track_strategy": json_strategy})
+                    json_strategy, weather, track = track_specific_strategy(json_data_variable)
+                    json_data_variable.update({"track_strategy": json_strategy, "weather": weather, "track": track})
                     with open(output_path, 'w') as f:
                         json.dump(json_data_variable, f, indent=2)
                 print(json_data_variable)
@@ -154,8 +154,8 @@ def process_tire_images():
                     json.dump(analysis_result, f, indent=2)
                 print(f"Saved analysis to {output_path}")
                 print(analysis_result)
-                json_strategy = track_specific_strategy(analysis_result)
-                analysis_result.update({"track_strategy": json_strategy})
+                json_strategy, weather, track = track_specific_strategy(analysis_result)
+                analysis_result.update({"track_strategy": json_strategy, "weather": weather, "track": track})
                 with open(output_path, 'w') as f:
                     json.dump(analysis_result, f, indent=2)
                 break

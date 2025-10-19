@@ -1,0 +1,19 @@
+{
+  "color": "Matte black",
+  "wear_pattern": "even",
+  "sidewall_deformation": false,
+  "is_graining": false,
+  "compound": "soft",
+  "track_strategy": "Maintain late braking markers, utilizing smooth trail-braking to manage front axle load. Exploit the soft compound's peak grip for high minimum cornering speeds, particularly through the Esses and Spoon. Modulate throttle application on exit to mitigate rear thermal degradation and wheelspin. Should track temperature increase by 10\u00b0C or degradation accelerate, reduce slip angles and implement lift-and-coast to extend the stint. In case of weather deterioration, box immediately for the appropriate wet-weather compound and adjust brake bias rearward.",
+  "weather": [
+    "sunny",
+    "rainy",
+    "snowy"
+  ],
+  "track": "Suzuka",
+  "lap_number": 11,
+  "tyre_pressure": 20.8,
+  "tyre_temperature": 107,
+  "track_temperature": 29,
+  "strategy": "MONITOR"
+}
