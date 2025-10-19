@@ -14,10 +14,6 @@ if __name__ == "__main__":
         with open(lap_file, 'r') as f:
             data = json.load(f)
         lap_number = int(lap_file.stem.split("_")[1])
-        
-        tyre_pressure = 20.5
-        tyre_temperature = 102
-        
         data = reverse_engineer_meta_data(data, lap_number)
 
         tyre_data_list.append(data)

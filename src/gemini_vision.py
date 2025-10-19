@@ -1,9 +1,11 @@
 import os
 import json
 import base64
+import random
 from pathlib import Path
 import google.generativeai as genai
 from dotenv import load_dotenv
+
 
 load_dotenv()
 
@@ -67,6 +69,50 @@ Guidelines:
     
     return json.loads(json_text)
     
+def track_specific_strategy(analysis_result):
+    track_name = ["Bahrain International Circuit" , "Spa-Francorchamps", "Monaco", "Silverstone", "Singapore", "Suzuka", "Abu Dhabi", "Austin", "Miami", "Marina Bay"]
+    random_track = random.choice(track_name)
+
+    weather = ["sunny", "rainy", "snowy"]
+    random_weather = random.choice(weather)
+
+
+
+    prompt = f"""You are a Formula 1 race engineer delivering tactical instructions.
+
+Analyze the tire data and provide strategy recommendations in professional engineering terminology.
+
+Input Data:
+- Tire Analysis: {analysis_result}
+- Track: {random_track}
+- Weather: {random_weather}
+
+Requirements:
+1. **Driving Adjustments** — Specify braking points, throttle application, and cornering techniques for current tire/track conditions.
+2. **Contingency Actions** — Define responses to:
+   - Track temperature change (±10°C)
+   - Weather deterioration
+   - Accelerated degradation
+
+Constraints:
+- Use technical terminology only
+- Remove all personal pronouns (you, I, we, your, mate)
+- State facts and instructions directly
+- Format: 3-5 sentences maximum 
+- No formatting of text and no conversational language or filler words
+
+"""
+
+    response = model.generate_content(prompt)
+    response_text = response.text.strip()
+    print(response_text)
+
+    return response_text
+
+    
+
+
+
 
 def process_tire_images():
     tire_images_dir = Path("tire_images")
@@ -81,6 +127,11 @@ def process_tire_images():
             
             if output_path.exists():
                 print(f"Skipping: {output_path} - Output file already exists")
+                with open(output_path, 'r') as f:
+                    json_data_variable = json.load(f)
+                
+                print(json_data_variable)
+                json_strategy = track_specific_strategy(json_data_variable)
                 continue
             
             for image_file in lap_dir.iterdir():
@@ -90,6 +141,7 @@ def process_tire_images():
                     json.dump(analysis_result, f, indent=2)
                 print(f"Saved analysis to {output_path}")
                 print(analysis_result)
+                json_strategy = track_specific_strategy(analysis_result)
                 break
 
 if __name__ == "__main__":
