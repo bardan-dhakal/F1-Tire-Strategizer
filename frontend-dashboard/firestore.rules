@@ -1,0 +1,16 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read/write access to laps collection
+    match /laps/{document} {
+      allow read, write: if true;
+    }
+    
+    // Allow read/write access to all documents (for development)
+    // WARNING: This is permissive and should be restricted in production
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
